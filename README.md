@@ -2,7 +2,7 @@
 Aim of this repository is to make a directory for common ds algo implementations in different languages
 
 <img
-src=“images/SubPronouns.jpg”
+src=“images/hack-intro.jpg”
 raw=true
 alt=“Subject Pronouns”
 />
@@ -65,6 +65,6 @@ It's very easy. You don't need to be an expert in coding and programming. Here a
    ![](images/clone.jpg)
 3. **Add your files by pushing them in your forked repository**
 4. **Create a new pull request.**
-   ![](Images/)
+   ![](images/pull.jpg)
 5. **Wait for your Pull Request to be reviewed and merged!**
 6. **Enjoy and welcome to Hacktoberfest 2020 and Keep Contributing :)**
