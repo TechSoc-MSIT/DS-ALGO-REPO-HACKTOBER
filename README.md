@@ -2,9 +2,9 @@
 Aim of this repository is to make a directory for common ds algo implementations in different languages
 
 <img
-src=“images/hack-intro.jpg”
+src=“images/hack-intro.JPG”
 raw=true
-alt=“Subject Pronouns”
+alt=“”
 />
 
 <br/>
@@ -60,11 +60,11 @@ So, yes! You can win a T-Shirt and few awesome stickers to attach on your laptop
 It's very easy. You don't need to be an expert in coding and programming. Here are the steps you need to follow to create your -(maybe)- EXAMPLE first pull request within few minutes.
 
 1. **Star this repository and Follow me on Github [here](https://github.com/TechsocMSIT2020/).**
-   ![](images/star.jpg)
+   ![](images/star.JPG)
 2. **Fork the repository and clone it on your local machine**
-   ![](images/clone.jpg)
+   ![](images/clone.JPG)
 3. **Add your files by pushing them in your forked repository**
 4. **Create a new pull request.**
-   ![](images/pull.jpg)
+   ![](images/pull.JPG)
 5. **Wait for your Pull Request to be reviewed and merged!**
 6. **Enjoy and welcome to Hacktoberfest 2020 and Keep Contributing :)**
