@@ -28,7 +28,7 @@ while(flag):
 		q.dequeue()
 	elif(choice==3):
 		q.print_queue()
-	elif(choice==3):
+	elif(choice==4):
 		flag=False
 	else:
 		print("Invalid Input")
