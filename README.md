@@ -59,7 +59,7 @@ So, yes! You can win a T-Shirt and few awesome stickers to attach on your laptop
 
 It's very easy. You don't need to be an expert in coding and programming. Here are the steps you need to follow to create your -(maybe)- EXAMPLE first pull request within few minutes.
 
-**IMPORTANT! Check issues first and comment on the ones you want to help with so that it canbe assigned to you. Create a new issue if you want to add something that is not present in the issues and wait for it to get assigned to you. PRs will be accepted only if the issues were assigned. Thank you!**
+**IMPORTANT! Check issues first and comment on the ones you want to help with so that it can be assigned to you. Create a new issue if you want to add something that is not present in the issues and wait for it to get assigned to you. PRs will be accepted only if the issues were assigned. Thank you!**
 
 1. **Star this repository and Follow me on Github [here](https://github.com/TechsocMSIT2020/).**
    ![](images/star.JPG)
