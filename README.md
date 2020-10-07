@@ -30,7 +30,7 @@
 ***  
   
 <br> 
-<b>Read the instructions below  and make pull requests to win a tshirt from DigitalOcean. Pull requests coming from Hacktoberfest Meetup Nepal will also qualify for free host giveaway. 
+<b>Read the instructions below  and make pull requests to win a tshirt from DigitalOcean.  
         </b></p></div>
 
 ---
