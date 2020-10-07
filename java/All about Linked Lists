@@ -1,0 +1,385 @@
+import java.io.*;
+public class LinkedList {
+	private class Node {
+		int data;
+		Node next;
+	}
+
+	private Node head;
+	private Node tail;
+	private int size;
+
+	public void display() {
+		System.out.println(
+				"\n--------------------------------------------------------------------------------------------------------------------");
+		for (Node temp = this.head; temp != null; temp = temp.next) {
+			if (temp == head)
+				System.out.print(temp.data);
+			else
+				System.out.print("=>" + temp.data);
+		}
+		System.out.println(
+				"\n--------------------------------------------------------------------------------------------------------------------\n");
+	}
+//	public void display() {
+//		System.out.println("\n-------------");
+//		Node temp = this.head;
+//		while (temp.next != null) {
+//			System.out.print(temp.data + "=>");
+//			temp = temp.next;
+//		}
+//		System.out.println("\n-------------");
+//	}
+
+	public void addLast(int item) {
+		Node nn = new Node();
+		nn.data = item;
+		nn.next = null;
+
+		if (this.size >= 1) {
+			this.tail.next = nn;
+		}
+
+		if (this.size == 0) {
+			this.head = nn;
+			this.tail = nn;
+		} else {
+			this.tail = nn;
+		}
+		this.size++;
+
+	}
+
+	public void addFirst(int item) {
+		Node nn = new Node();
+		nn.data = item;
+		nn.next = null;
+
+		if (this.size == 0) {
+			this.head = nn;
+			this.tail = nn;
+			this.size++;
+		} else {
+			nn.next = head;
+			this.head = nn;
+			this.size++;
+		}
+	}
+
+	public int getAt(int idx) throws Exception {
+		if (idx < 0 || idx >= this.size)
+			throw new Exception("Invalid index.");
+		Node temp = this.head;
+		for (int i = 1; i <= idx; i++)
+			temp = temp.next;
+		return temp.data;
+
+	}
+
+	private Node getNodeAt(int idx) throws Exception {
+		if (idx < 0 || idx >= this.size)
+			throw new Exception("Invalid index.");
+		Node temp = this.head;
+		for (int i = 1; i <= idx; i++)
+			temp = temp.next;
+		return temp;
+	}
+
+	public int getFirst() throws Exception {
+		if (this.size == 0)
+			throw new Exception("Linked List is Empty.");
+		return this.head.data;
+	}
+
+	public int getLast() throws Exception {
+		if (this.size == 0)
+			throw new Exception("Linked List is Empty");
+		return this.tail.data;
+	}
+
+	public void addAt(int idx, int item) throws Exception {
+		if (idx < 0 || idx > this.size)
+			throw new Exception("Invalid Index.");
+		Node nn = new Node();
+		nn.data = item;
+		if (idx == 0)
+			addFirst(item);
+		else if (idx == this.size)
+			addLast(item);
+		else {
+			Node nm1 = getNodeAt(idx - 1);
+			Node np1 = nm1.next;
+			nn.next = np1;
+			nm1.next = nn;
+			this.size++;
+		}
+	}
+
+	public int removeFirst() throws Exception {
+		if (this.size == 0)
+			throw new Exception("The Linked List is Empty");
+		int temp = this.head.data;
+		if (this.size == 1) {
+			this.head.next = null;
+			this.head = null;
+			this.tail = null;
+			this.size--;
+
+		} else {
+			this.head = this.head.next;
+			this.size--;
+
+		}
+		return temp;
+
+	}
+
+	public int removeLast() throws Exception {
+		if (this.size == 0)
+			throw new Exception("The Linked List is empty");
+		int temp = this.tail.data;
+		if (this.size == 1) {
+			this.head = null;
+			this.tail = null;
+			this.size = 0;
+
+		} else {
+			Node lm1 = getNodeAt(this.size - 2);
+//			lm1.next=null;
+			this.tail = lm1;
+//			this.tail = lm1;
+			this.tail.next = null;
+			this.size--;
+		}
+		return temp;
+	}
+
+	public int removeAt(int idx) throws Exception {
+		if (idx < 0 || idx >= size)
+			throw new Exception("Invalid Index.");
+		int temp = getAt(idx);
+		if (idx == 0)
+			return removeFirst();
+		else if (idx == this.size - 1)
+			return removeLast();
+		else {
+			Node nidxm1 = getNodeAt(idx - 1);
+			nidxm1.next = nidxm1.next.next;
+			return temp;
+		}
+	}
+
+	public int MidNode() {
+		Node slow = head;
+		Node fast = head;
+		while (fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow.data;
+
+	}
+
+	public void ReverseDataIteratively() throws Exception {
+		int left = 0, right = this.size - 1;
+
+		while (left < right) {
+			int temp = getAt(left);
+			getNodeAt(left).data = getNodeAt(right).data;
+			getNodeAt(right).data = temp;
+			left++;
+			right--;
+
+		}
+
+	}
+
+	public void ReversePointersIteratively() {
+		Node prev = head;
+		Node curr = prev.next;
+		Node ahead = curr.next;
+		while (curr != null) {
+			ahead = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = ahead;
+		}
+		Node temp = head;
+		head = tail;
+		tail = temp;
+		this.tail.next = null;
+	}
+
+	public void ReversePointersRecursively() {
+		ReversePointersRecursively(head, head.next);
+		head.next = null;
+		Node temp = head;
+		head = tail;
+		tail = temp;
+	}
+
+	private void ReversePointersRecursively(Node prev, Node curr) {
+		if (curr == null)
+			return;
+		ReversePointersRecursively(prev.next, curr.next);
+		curr.next = prev;
+	}
+
+	private class HeapMover {
+		Node left;
+	}
+
+	public void ReverseDataRecursively() {
+		HeapMover mover = new HeapMover();
+		mover.left = head;
+		ReverseDataRecursively(mover, head, 0);
+	}
+
+	private void ReverseDataRecursively(HeapMover mover, Node right, int count) {
+		if (right == null)
+			return;
+		ReverseDataRecursively(mover, right.next, count + 1);
+
+		if (count >= size / 2) {
+			int temp = mover.left.data;
+			mover.left.data = right.data;
+			right.data = temp;
+		}
+		mover.left = mover.left.next;
+	}
+
+	public void ReverseDataRecursivelyAliter() {
+		System.out.println("Let's see what happens " + ReverseDataRecursivelyAliter(head, head, 0));
+		ReverseDataRecursivelyAliter(head, head, 0);
+	}
+
+	private Node ReverseDataRecursivelyAliter(Node left, Node right, int count) {
+
+		if (right == null)
+			return left;
+		Node correctLeft = ReverseDataRecursivelyAliter(left, right.next, count + 1);
+		if (count >= size / 2) {
+			int temp = correctLeft.data;
+			correctLeft.data = right.data;
+			right.data = temp;
+
+		}
+		return correctLeft.next;
+
+	}
+
+	public void Fold() {
+		FoldTheLinkedList(head, head, 0);
+	}
+
+	private Node FoldTheLinkedList(Node left, Node right, int count) {
+		if (right == null)
+			return left;
+		Node temp = null;
+		Node correctLeft = FoldTheLinkedList(left, right.next, count + 1);
+		if (count > size / 2) {
+			temp = correctLeft.next;
+			correctLeft.next = right;
+			right.next = temp;
+
+		}
+		if (count == size / 2) {
+			tail = right;
+			tail.next = null;
+		}
+		return temp;
+	}
+
+	public void CheckLLPalindrome() {
+		HeapMover mover = new HeapMover();
+		mover.left = head;
+		System.out.println(CheckLLPalindrome(mover, head, 0, true));
+	}
+
+	private boolean CheckLLPalindrome(HeapMover mover, Node right, int count, boolean TorF) {
+		if (right == null) {
+			return true;
+		}
+
+		TorF = CheckLLPalindrome(mover, right.next, count + 1, TorF);
+
+		if (TorF) {
+			if (count >= size / 2) {
+				if (mover.left.data != right.data)
+					TorF = false;
+			}
+		}
+		mover.left = mover.left.next;
+		return TorF;
+	}
+
+	public int KthFromLast(int k) throws Exception {
+		if (k < 0 || k >= size)
+			throw new Exception("Invalid Index.");
+		Node fast = head;
+		Node slow = head;
+
+		// create a gap of k between the pointers
+		for (int i = 1; i <= k; i++)
+			fast = fast.next;
+
+		// move both the pointers with uniform speed
+		while (fast.next != null) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+		return slow.data;
+	}
+
+	public void KReverse(int k) throws Exception {
+		int originalSize = this.size;
+		LinkedList arr[] = new LinkedList[this.size / k];
+		int cnt = -1;
+		for (int i = 1; i <= originalSize; i++) {
+			if ((i - 1) % k == 0) {
+				++cnt;
+				arr[cnt] = new LinkedList();
+
+			}
+
+			int temp = this.removeFirst();
+
+			arr[cnt].addFirst(temp);
+
+		}
+
+		for (int i = 0; i < originalSize / k; i++) {
+			if (i == originalSize / k - 1)
+				arr[i].tail.next = null;
+			else
+				arr[i].tail.next = arr[i + 1].head;
+		}
+		arr[0].display();
+
+	}
+
+	public void KReverseAliter(int k) throws Exception {
+		int originalSize = this.size;
+		LinkedList ans = new LinkedList();
+		for (int i = 1; i <= k; i++) {
+			int temp = this.removeFirst();
+			ans.addFirst(temp);
+
+		}
+
+		for (int i = 2; i <= originalSize / k; i++) {
+			LinkedList templl = new LinkedList();
+
+			for (int j = 1; j <= k; j++) {
+				int temp = this.removeFirst();
+				templl.addFirst(temp);
+
+			}
+			ans.tail.next = templl.head;
+			ans.tail = templl.tail;
+
+		}
+		ans.display();
+
+	}
+}
