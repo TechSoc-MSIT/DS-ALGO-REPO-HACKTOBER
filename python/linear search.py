@@ -3,6 +3,6 @@ def search(arr, ele):
     # ele : element which is to be searched
     # returns position of the element if found else returns -1
     for i in range(len(arr)):
-        if(arr[i]=ele):
+        if arr[i]==ele:
             return i;
     return -1;
