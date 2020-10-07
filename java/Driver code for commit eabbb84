@@ -1,0 +1,32 @@
+//THIS CODE CAN BE CHANGED AND ALTERED AS PER USE, THE CORRESPONDING FUNCTIONS HAVE BEEN INCORPORATED IN COMMIT eabbb84 
+
+public class LinkedListClient {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		LinkedList list = new LinkedList();
+		list.addLast(10);
+		list.addLast(20);
+		list.addLast(30);
+		list.addLast(40);
+		list.addLast(50);
+		list.addLast(60);
+//		list.addLast(60);
+		list.addLast(70);
+		list.addLast(80);
+		list.addLast(90);
+//		list.addLast(100);
+//		list.addLast(110);
+//		list.addLast(120);
+//		list.display();
+
+//		list.Fold();
+		list.display();
+		list.KReverse(3);
+//		list.KReverseAliter(3);
+//		list.CheckLLPalindrome();
+//		System.out.println(list.KthFromLast(6));
+
+	}
+
+}
